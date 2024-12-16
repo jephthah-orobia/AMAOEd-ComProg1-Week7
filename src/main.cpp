@@ -9,52 +9,48 @@
 #include <iostream>
 #include <limits>
 #include "whatsNext.h"
+#include "getMaxCharPerLine.h"
 
 using namespace std;
 
-int gcd(int a, int b)
-{
-  while (b != 0)
-  {
-    int temp = b;
-    b = a % b;
-    a = temp;
-  }
-  return a;
-}
-
 int main()
 {
+  int h, i=1, maxCharPerLine = getMaxCharPerLine();
 
-  int h, w, gcf, h1, w1;
-
-  const char *divider = "\n================================================\n";
-
-  cout << "Let's make a right triangle!" << endl
-       << divider << endl;
-
-  cout << "How tall do you want it? [3-40 integers only]: ";
+  cout << "Let's make a right triangle!" << endl;
+  cout << "How many asterisk tall do you want it? [2-"<< maxCharPerLine <<" integers only]: ";
 
   while (true)
   {
     cin >> h;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    if (!cin.fail() && h > 2 && h < 41)
+    if (!cin.fail() && h > 1 && h <= maxCharPerLine)
     {
       break;
     }
     else
     {
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cin.clear();
-      cout << "Invalid height. Try again [3-40 integers only]: ";
+      cout << "Invalid height. Try again [3-"<< maxCharPerLine <<" integers only]: ";
     }
   }
 
-  cout << "You want a " << h << " asterisk tall right triangle." << endl
-       << divider << endl;
+  system("cls"); //clear the screen
 
-  // LOOPING IMPLENTATION HERE
-  // Clear the screen before showing the triangle.
+  while(i <= h){
+    int r = 1;
+    while(r <= i){
+      if(r == 1 || r == i || i == h)
+        cout << "*";
+      else
+        cout << " ";
+      r++;
+    };
+    cout << endl;
+    i++;
+  }
+
+  cout << endl << "Above is a " << h << " tall right triangle." << endl;
 
   map<char, tuple<string, function<int()>>> actions = {
       {'r', make_tuple("Re-Run App",
