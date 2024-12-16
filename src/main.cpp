@@ -4,10 +4,12 @@
  * @app desc: This is my personalized boilerplate for C++ console app
  * ****************************************************************/
 
-#include <cstdio>
-#include <cstdlib>
+
 #include <iostream>
 #include <limits>
+#include <tuple>
+#include <functional>
+
 #include "whatsNext.h"
 #include "getMaxCharPerLine.h"
 
