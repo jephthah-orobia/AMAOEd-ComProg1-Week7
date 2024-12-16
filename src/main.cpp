@@ -8,8 +8,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <limits>
-#include <thread>
-#include <chrono>
 #include "whatsNext.h"
 
 using namespace std;
