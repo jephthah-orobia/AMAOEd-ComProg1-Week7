@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create Directory",
+            "type": "shell",
+            "command": "mkdir -p build",
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Build Project",
+            "type": "shell",
+            "command": "g++ -std=c++11 -o build/main src/main.cpp",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Prelaunch Tasks",
+            "dependsOn": ["Create Directory", "Build Project"],
+            "problemMatcher": []
+        }
+    ]
+}
