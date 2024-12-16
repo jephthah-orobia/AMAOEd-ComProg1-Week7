@@ -5,9 +5,6 @@
  *            the console from exiting and prints options of what to
  *            do next and when user inputs a character, the
  *            the defined action will be invoked.
- * @history:
- *  - 2018/02/08
- *      -- Created _pause() function
  * ****************************************************************/
 
 #ifndef _WHATSNEXT
