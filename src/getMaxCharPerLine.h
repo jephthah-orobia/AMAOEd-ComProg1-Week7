@@ -7,7 +7,7 @@
 
 #ifndef _MAXCHARPERLINE_FUNC
 #define _MAXCHARPERLINE_FUNC
-
+#define NOMINMAX
 #include <windows.h>
 
 int getMaxCharPerLine() {
