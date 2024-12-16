@@ -17,7 +17,7 @@ using namespace std;
 
 int main()
 {
-  int h, i=1, maxCharPerLine = getMaxCharPerLine();
+  int h, maxCharPerLine = getMaxCharPerLine();
 
   cout << "Let's make a right triangle!" << endl;
   cout << "How many asterisk tall do you want it? [2-"<< maxCharPerLine <<" integers only]: ";
@@ -39,17 +39,14 @@ int main()
 
   system("cls"); //clear the screen
 
-  while(i <= h){
-    int r = 1;
-    while(r <= i){
-      if(r == 1 || r == i || i == h)
+  for(int i=1; i <= h; i++){
+    for(int r=0; r < maxCharPerLine; r++){
+      if(r == maxCharPerLine - 1 || r == maxCharPerLine - i || (i == h && r > maxCharPerLine - i ))
         cout << "*";
       else
         cout << " ";
-      r++;
     };
     cout << endl;
-    i++;
   }
 
   cout << endl << "Above is a " << h << " tall right triangle." << endl;
