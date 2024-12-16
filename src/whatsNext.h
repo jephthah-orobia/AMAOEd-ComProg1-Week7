@@ -1,25 +1,22 @@
 /* ****************************************************************
  * @author: Jephthah Orobia
- * @app name: whats-next.h
+ * @app name: whatsNext.h
  * @app desc: This library shall contain a function that will stop
  *            the console from exiting and prints options of what to
  *            do next and when user inputs a character, the
  *            the defined action will be invoked.
- * @history:
- *  - 2018/02/08
- *      -- Created _pause() function
  * ****************************************************************/
 
 #ifndef _WHATSNEXT
 #define _WHATSNEXT
 
 #include <iostream>
+#include <limits>
 #include <map>
 #include <tuple>
 #include <functional>
 
 using namespace std;
-
 
 int whatsNext(map<char, tuple<string, function<int()>>> actionMap)
 {
