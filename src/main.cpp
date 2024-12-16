@@ -14,54 +14,58 @@
 
 using namespace std;
 
+int gcd(int a, int b)
+{
+  while (b != 0)
+  {
+    int temp = b;
+    b = a % b;
+    a = temp;
+  }
+  return a;
+}
+
 int main()
 {
 
-  char name[50];
+  int h, w, gcf, h1, w1;
 
   const char *divider = "\n================================================\n";
 
-  cout << "Let's try basic input-output console routine!" << endl
+  cout << "Let's make a right triangle!" << endl
        << divider << endl;
 
-  cout << "What is your first name? ";
+  cout << "How tall do you want it? [3-40 integers only]: ";
 
-  cin >> name;
+  while (true)
+  {
+    cin >> h;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    if (!cin.fail() && h > 2 && h < 41)
+    {
+      break;
+    }
+    else
+    {
+      cin.clear();
+      cout << "Invalid height. Try again [3-40 integers only]: ";
+    }
+  }
 
-  cout << "Hello " << name << endl
+  cout << "You want a " << h << " asterisk tall right triangle." << endl
        << divider << endl;
+
+  // LOOPING IMPLENTATION HERE
+  // Clear the screen before showing the triangle.
 
   map<char, tuple<string, function<int()>>> actions = {
-      {'A', make_tuple("Re-Run App",
+      {'r', make_tuple("Re-Run App",
                        []()
                        {
                          system("cls");
                          return main();
                        })},
-      {'B', make_tuple("Count 10 to 1 the re-run app",
-                       []()
-                       {
-                         system("cls");
-                         for (int i = 10; i > 0; i--)
-                         {
-                           cout << i << endl;
-                           this_thread::sleep_for(chrono::seconds(1));
-                         };
-                         system("cls");
-                         return main();
-                       })},
-      {'b', make_tuple("Count 1 to 10 the re-run app",
-                       []()
-                       {
-                         system("cls");
-                         for (int i = 1; i <= 10; i++)
-                         {
-                           cout << i << endl;
-                           this_thread::sleep_for(chrono::seconds(1));
-                         };
-                         system("cls");
-                         return main();
-                       })}};
+      };
 
   return whatsNext(actions);
 }
