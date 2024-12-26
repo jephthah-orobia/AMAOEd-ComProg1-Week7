@@ -20,20 +20,20 @@ int main()
   int h, i=1, maxCharPerLine = getMaxCharPerLine();
 
   cout << "Let's make a right triangle!" << endl;
-  cout << "How many asterisk tall do you want it? [2-"<< maxCharPerLine <<" integers only]: ";
+  cout << "How many asterisk tall do you want it?\nFor best result, pick an odd number [2-"<< maxCharPerLine <<" integers only]: ";
 
   while (true)
   {
-    cin >> h;
+    cin >> noskipws >> h;
     if (!cin.fail() && h > 1 && h <= maxCharPerLine)
     {
       break;
     }
     else
     {
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cin.clear();
-      cout << "Invalid height. Try again [3-"<< maxCharPerLine <<" integers only]: ";
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      cout << endl << "Invalid height. Try again [3-"<< maxCharPerLine <<" integers only]: ";
     }
   }
 
@@ -42,7 +42,12 @@ int main()
   while(i <= h){
     int r = 1;
     while(r <= i){
-      if(r == 1 || r == i || i == h)
+      if(r == 1
+          || r == i
+          || (i == h
+              && ((h % 2 == 0 && r > h/2 + 1 && r % 2 == 0)
+              || (r < h/2 + 1 && r%2 == 1)
+              || (h % 2 == 1 && r%2 == 1))))
         cout << "*";
       else
         cout << " ";
