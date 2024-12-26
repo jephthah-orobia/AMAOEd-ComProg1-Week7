@@ -41,10 +41,11 @@ int main()
 
   for(int i=1; i <= h; i++){
     for(int r=0; r < maxCharPerLine; r++){
-      if(r == maxCharPerLine - 1 || r == maxCharPerLine - i || (i == h && r > maxCharPerLine - i ))
+      if(r == maxCharPerLine - 1 || r == maxCharPerLine - i || ( i == h && r > maxCharPerLine - i && (r - maxCharPerLine + i) % 2 == 0)){
         cout << "*";
-      else
+      } else {
         cout << " ";
+      }
     };
     cout << endl;
   }
