@@ -1,7 +1,8 @@
 /* ****************************************************************
  * @author: JEPHTHAH M. OROBIA
- * @app name: AMAOEd-Cpp-MyTemplate
- * @app desc: This is my personalized boilerplate for C++ console app
+ * @app name: Right-Aligned Right Triangle Generator
+ * @app desc: This console app draws a right triangle alinged to the
+ *            right of the window using asterisk based on user's input.
  * ****************************************************************/
 
 
