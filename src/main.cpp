@@ -34,7 +34,7 @@ int main()
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << endl << "Invalid height. Try again [3-"<< maxCharPerLine / 2 <<" integers only]: ";
+      cout << endl << "Invalid height. Try again [2-"<< maxCharPerLine / 2 <<" integers only]: ";
     }
   }
 
