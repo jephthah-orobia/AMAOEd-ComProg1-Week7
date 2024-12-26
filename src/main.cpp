@@ -34,7 +34,7 @@ int main()
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << "Invalid height. Try again [3-"<< maxW <<" integers only]: ";
+      cout << "Invalid height. Try again [2-"<< maxW <<" integers only]: ";
     }
   }
 
