@@ -1,6 +1,6 @@
 /* ****************************************************************
  * @author: Jephthah Orobia
- * @app name: whats-next.h
+ * @app name: getMaxCharPerLine.h
  * @app desc: This library shall contain a function that retrieve
  *              the maximum character per line
  * ****************************************************************/
