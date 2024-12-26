@@ -4,7 +4,6 @@
  * @app desc: This is my personalized boilerplate for C++ console app
  * ****************************************************************/
 
-
 #include <iostream>
 #include <limits>
 #include <tuple>
@@ -17,15 +16,17 @@ using namespace std;
 
 int main()
 {
-  int h, i=1, maxCharPerLine = getMaxCharPerLine() / 2;
+  int h, //height
+    row = 1, //current line counter, imagine a grid, the line is the row
+    maxC = getMaxCharPerLine() / 2; // half the max so that width can be twice the height.
 
   cout << "Let's make a right triangle!" << endl;
-  cout << "How many asterisk tall do you want it? [2-"<< maxCharPerLine <<" integers only]: ";
+  cout << "How many asterisk tall do you want it? [2-" << maxC << " integers only]: ";
 
   while (true)
   {
     cin >> noskipws >> h;
-    if (!cin.fail() && h > 1 && h <= maxCharPerLine)
+    if (!cin.fail() && h > 1 && h <= maxC)
     {
       break;
     }
@@ -33,29 +34,37 @@ int main()
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << endl << "Invalid height. Try again [3-"<< maxCharPerLine <<" integers only]: ";
+      cout << endl
+           << "Invalid height. Try again [3-" << maxC << " integers only]: ";
     }
   }
 
-  system("cls"); //clear the screen
+  system("cls"); // clear the screen
 
-  while(i <= h){
-    int r = 1;
-    while(r <= 2*i){
-      if(r == 1
-          || r == 2*i - 1
-          || (i == h
-              && r % 2 == 1))
+  while (row <= h)
+  {
+    int col = 1;
+    while (col <= 2 * row)
+    {
+      if (col == 1            // vertical leg of the triangle
+          || col == 2 * row - 1 // the hypotenuse
+          || (row == h        // horizontal leg or the base of the triangle
+              && col % 2 == 1))
+      {
         cout << "*";
+      }
       else
+      {
         cout << " ";
-      r++;
+      }
+      col++;
     };
     cout << endl;
-    i++;
+    row++;
   }
 
-  cout << endl << "Above is a " << h << " tall right triangle." << endl;
+  cout << endl
+       << "Above is a " << h << " tall right triangle." << endl;
 
   map<char, tuple<string, function<int()>>> actions = {
       {'r', make_tuple("Re-Run App",
@@ -64,7 +73,7 @@ int main()
                          system("cls");
                          return main();
                        })},
-      };
+  };
 
   return whatsNext(actions);
 }
