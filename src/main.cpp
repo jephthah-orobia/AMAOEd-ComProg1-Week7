@@ -1,7 +1,8 @@
 /* ****************************************************************
  * @author: JEPHTHAH M. OROBIA
- * @app name: AMAOEd-Cpp-MyTemplate
- * @app desc: This is my personalized boilerplate for C++ console app
+ * @app name: Inverted Equilateral Triangle Generator
+ * @app desc: This console app draws an inverted equilataeral triangle
+ *            on the screen based the user's prefered height.
  * ****************************************************************/
 
 
