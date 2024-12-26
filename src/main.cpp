@@ -17,15 +17,15 @@ using namespace std;
 
 int main()
 {
-  int h, maxCharPerLine = getMaxCharPerLine();
+  int h, maxW = getMaxCharPerLine() / 2;
 
   cout << "Let's make a right triangle!" << endl;
-  cout << "How many asterisk tall do you want it?\nFor best result, pick an odd number [2-"<< maxCharPerLine <<" integers only]: ";
+  cout << "How many asterisk tall do you want it? [2-"<< maxW <<" integers only]: ";
 
   while (true)
   {
     cin >> h;
-    if (!cin.fail() && h > 1 && h <= maxCharPerLine)
+    if (!cin.fail() && h > 1 && h <= maxW)
     {
       break;
     }
@@ -33,15 +33,21 @@ int main()
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << "Invalid height. Try again [3-"<< maxCharPerLine <<" integers only]: ";
+      cout << "Invalid height. Try again [3-"<< maxW <<" integers only]: ";
     }
   }
 
   system("cls"); //clear the screen
 
-  for(int i=1; i <= h; i++){
-    for(int r=0; r < maxCharPerLine; r++){
-      if(r == maxCharPerLine - 1 || r == maxCharPerLine - i || ( i == h && r > maxCharPerLine - i && (r - maxCharPerLine + i) % 2 == 0)){
+  // the variable names is for for easier visualization, think of grid
+  for(int row=1; row <= h; row++){
+    for(int col=0; col < 2*maxW; col++){
+      if(col == 2*maxW - 1 // the vertical leg of the right triangle
+        || col == 2*maxW - 2*row + 1 // the hypotenuse of the right triangle
+        || ( row == h // the base or the horizontal leg of the right triangle
+              && col > 2*maxW - 2*row + 1
+              && (col - (2*maxW - 2*row + 1)) % 2 == 0))
+        {
         cout << "*";
       } else {
         cout << " ";
@@ -49,8 +55,8 @@ int main()
     };
     cout << endl;
   }
-
-  cout << endl << "Above is a " << h << " tall right triangle." << endl;
+  
+  cout << endl << "Above (to the right) is a " << h << " tall right triangle." << endl;
 
   map<char, tuple<string, function<int()>>> actions = {
       {'r', make_tuple("Re-Run App",
