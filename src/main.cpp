@@ -17,10 +17,10 @@ using namespace std;
 
 int main()
 {
-  int h, i=1, maxCharPerLine = getMaxCharPerLine();
+  int h, i=1, maxCharPerLine = getMaxCharPerLine() / 2;
 
   cout << "Let's make a right triangle!" << endl;
-  cout << "How many asterisk tall do you want it?\nFor best result, pick an odd number [2-"<< maxCharPerLine <<" integers only]: ";
+  cout << "How many asterisk tall do you want it? [2-"<< maxCharPerLine <<" integers only]: ";
 
   while (true)
   {
@@ -41,13 +41,11 @@ int main()
 
   while(i <= h){
     int r = 1;
-    while(r <= i){
+    while(r <= 2*i){
       if(r == 1
-          || r == i
+          || r == 2*i - 1
           || (i == h
-              && ((h % 2 == 0 && r > h/2 + 1 && r % 2 == 0)
-              || (r < h/2 + 1 && r%2 == 1)
-              || (h % 2 == 1 && r%2 == 1))))
+              && r % 2 == 1))
         cout << "*";
       else
         cout << " ";
