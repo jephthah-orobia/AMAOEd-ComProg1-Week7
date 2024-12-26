@@ -17,15 +17,15 @@ using namespace std;
 
 int main()
 {
-  int h, i=1, maxCharPerLine = getMaxCharPerLine();
+  int h, row=1, maxCharPerLine = getMaxCharPerLine();
 
-  cout << "Let's make a right triangle!" << endl;
-  cout << "How many asterisk tall do you want it?\nFor best result, pick an odd number [2-"<< maxCharPerLine <<" integers only]: ";
+  cout << "Let's make an inverse equilateral triangle!" << endl;
+  cout << "How many asterisk tall do you want it? [2-"<< maxCharPerLine / 2 <<" integers only]: ";
 
   while (true)
   {
     cin >> noskipws >> h;
-    if (!cin.fail() && h > 1 && h <= maxCharPerLine)
+    if (!cin.fail() && h > 1 && h <= maxCharPerLine/2)
     {
       break;
     }
@@ -33,31 +33,27 @@ int main()
     {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
-      cout << endl << "Invalid height. Try again [3-"<< maxCharPerLine <<" integers only]: ";
+      cout << endl << "Invalid height. Try again [3-"<< maxCharPerLine / 2 <<" integers only]: ";
     }
   }
 
   system("cls"); //clear the screen
 
-  while(i <= h){
-    int r = 1;
-    while(r <= i){
-      if(r == 1
-          || r == i
-          || (i == h
-              && ((h % 2 == 0 && r > h/2 + 1 && r % 2 == 0)
-              || (r < h/2 + 1 && r%2 == 1)
-              || (h % 2 == 1 && r%2 == 1))))
+  do {
+    int col = 1;
+    do {
+      if(col == row || col == 2*h - row || (row == 1 && col % 2 == 1)){
         cout << "*";
-      else
+      } else {
         cout << " ";
-      r++;
-    };
+      }
+      col++;
+    } while (col < 2*h);
     cout << endl;
-    i++;
-  }
+    row++;
+  } while (row <= h);
 
-  cout << endl << "Above is a " << h << " tall right triangle." << endl;
+  cout << endl << "Above is a " << h << " tall equilateral triangle." << endl;
 
   map<char, tuple<string, function<int()>>> actions = {
       {'r', make_tuple("Re-Run App",
